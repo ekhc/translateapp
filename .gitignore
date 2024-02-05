@@ -3,10 +3,12 @@ HELP.md
 build/
 gradle
 gradle/
-gradlew
+gradlew*
 !**/src/main/**/build/
 !**/src/test/**/build/
+.DS_Store
 .aider*
+.DS_Store
 
 ### STS ###
 .apt_generated
