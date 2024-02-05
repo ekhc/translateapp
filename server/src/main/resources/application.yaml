@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+google:
+  translate:
+    api:
+      url: https://translation.googleapis.com/v3
