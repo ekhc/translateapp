@@ -13,4 +13,4 @@ spring:
     enabled: true
 logging:
   level:
-    com.translate.server: DEBUG
+    com.translate.server: INFO
