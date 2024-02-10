@@ -1,54 +1,43 @@
-import org.gradle.api.tasks.compile.JavaCompile
-import org.gradle.api.tasks.testing.Test
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.2.1" apply false
-	id("io.spring.dependency-management") version "1.1.4" apply false
-	kotlin("jvm") version "1.9.21" apply false
-	kotlin("plugin.spring") version "1.9.21" apply false
+	id("org.springframework.boot") version "3.2.2"
+	id("io.spring.dependency-management") version "1.1.4"
+	kotlin("jvm") version "1.9.22"
+	kotlin("plugin.spring") version "1.9.22"
 }
 
 group = "com.translate"
 version = "0.0.1-SNAPSHOT"
 
-allprojects {
-	repositories {
-		mavenCentral()
-	}
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+}
 
-	tasks.withType<JavaCompile> {
-		sourceCompatibility = JavaVersion.VERSION_17.toString()
-		targetCompatibility = JavaVersion.VERSION_17.toString()
-	}
+repositories {
+	mavenCentral()
+}
 
-	tasks.withType<KotlinCompile> {
-		kotlinOptions {
-			freeCompilerArgs = listOf("-Xjsr305=strict")
-			jvmTarget = "17"
-		}
+dependencies {
+	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("com.squareup.okhttp3:okhttp:4.12.0")
+	implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+	implementation("com.google.code.gson:gson:2.10.1")
+	implementation("org.springframework:spring-web:6.1.3")
+	implementation("com.google.cloud:google-cloud-core:2.32.0")
+	implementation("com.google.cloud:google-cloud-translate:2.34.0")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.withType<KotlinCompile> {
+	kotlinOptions {
+		freeCompilerArgs += "-Xjsr305=strict"
+		jvmTarget = "17"
 	}
 }
 
-subprojects {
-	apply {
-		plugin("java-library")
-		plugin("io.spring.dependency-management")
-		plugin("org.jetbrains.kotlin.jvm")
-		plugin("org.jetbrains.kotlin.plugin.spring")
-		plugin("org.springframework.boot")
-	}
-
-	dependencies {
-		"implementation"("org.springframework.boot:spring-boot-starter")
-		"implementation"("org.springframework.boot:spring-boot-configuration-processor")
-		"compileOnly"("org.projectlombok:lombok")
-		"annotationProcessor"("org.projectlombok:lombok")
-		"developmentOnly"("org.springframework.boot:spring-boot-devtools")
-		"testImplementation"("org.springframework.boot:spring-boot-starter-test")
-	}
-
-	tasks.withType<Test> {
-		useJUnitPlatform()
-	}
+tasks.withType<Test> {
+	useJUnitPlatform()
 }
