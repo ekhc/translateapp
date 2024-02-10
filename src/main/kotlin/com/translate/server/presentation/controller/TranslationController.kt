@@ -19,8 +19,13 @@ class TranslationController(
         return translationService.translateText(request)
     }
 
+    import org.slf4j.LoggerFactory
+
     @GetMapping("/indexPage")
     open fun index(model: Model, request: HttpServletRequest): String {
+        val logger = LoggerFactory.getLogger(TranslationController::class.java)
+        logger.info("index() method invoked")
+
         val requestUrl = request.requestURL.toString()
         val webSocketAddress = requestUrl.replace("http", "ws").
         replace("indexPage", "customWebSocketHandler")
