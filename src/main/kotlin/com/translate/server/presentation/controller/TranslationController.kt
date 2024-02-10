@@ -4,10 +4,11 @@ import com.translate.server.presentation.dto.TranslationRequestDto
 import com.translate.server.presentation.dto.TranslationResponseDto
 import com.translate.server.application.service.GoogleTranslationServiceImpl
 import jakarta.servlet.http.HttpServletRequest
+import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
-@RestController
+@Controller
 @RequestMapping("/api")
 class TranslationController(
     private val translationService: GoogleTranslationServiceImpl
