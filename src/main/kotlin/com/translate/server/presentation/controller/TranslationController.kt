@@ -19,11 +19,11 @@ class TranslationController(
         return translationService.translateText(request)
     }
 
-    @GetMapping("/index")
+    @GetMapping("/indexPage")
     open fun index(model: Model, request: HttpServletRequest): String {
         val requestUrl = request.requestURL.toString()
         val webSocketAddress = requestUrl.replace("http", "ws").
-        replace("index", "customWebSocketHandler")
+        replace("indexPage", "customWebSocketHandler")
         model.addAttribute("webSocket", webSocketAddress)
         return "index"
     }
