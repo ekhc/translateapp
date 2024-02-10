@@ -13,7 +13,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @Configuration
 @EnableWebSocket
 class CustomWebSocketConfig : WebSocketConfigurer {
-    private val logger = LoggerFactory.getLogger(TranslationController::class.java)
+    private val logger = LoggerFactory.getLogger(CustomWebSocketConfig::class.java)
 
     override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
         logger.info("registerWebSocketHandlers is being called")
