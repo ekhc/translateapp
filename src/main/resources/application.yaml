@@ -6,3 +6,11 @@ google:
   translate:
     api:
       url: https://translation.googleapis.com/v3
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    enabled: true
+logging:
+  level:
+    com.translate.server: DEBUG
