@@ -16,6 +16,7 @@ class CustomWebSocketConfig : WebSocketConfigurer {
     private val logger = LoggerFactory.getLogger(TranslationController::class.java)
 
     override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
+        logger.info("registerWebSocketHandlers is being called")
         val handler = customWebSocketHandler()
         val path = "/api/ws"
         registry.addHandler(handler, path)
