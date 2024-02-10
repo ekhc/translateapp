@@ -15,9 +15,10 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 class CustomWebSocketConfig : WebSocketConfigurer {
     override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
         val handler = customWebSocketHandler()
-        registry.addHandler(handler, "/api/ws")
+        val path = "/api/ws"
+        registry.addHandler(handler, path)
         val logger = LoggerFactory.getLogger(TranslationController::class.java)
-        logger.info("Registered WebSocket handler: ${handler::class.java.name}")
+        logger.info("Registered WebSocket handler: ${handler::class.java.name} at path: $path")
     }
 
     @Bean
