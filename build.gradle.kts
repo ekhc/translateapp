@@ -28,6 +28,8 @@ dependencies {
 	implementation("org.springframework:spring-web:6.1.3")
 	implementation("com.google.cloud:google-cloud-core:2.32.0")
 	implementation("com.google.cloud:google-cloud-translate:2.34.0")
+	implementation("org.springframework.boot:spring-boot-starter-websocket")
+	implementation("org.springframework:spring-websocket:6.1.3")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
